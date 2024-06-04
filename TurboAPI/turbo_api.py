@@ -77,17 +77,17 @@ class TurboAPI:
                 ).encode()
 
             response = Response(
-                ContentTypes.PLAIN.value,
-                HTTPStatusCodes.OK_200.value
+                HTTPStatusCodes.OK_200.value,
+                {HTTPHeaders.CONTENT_TYPE: ContentTypes.PLAIN.value}
             )
 
             args = self._assemble_handler_arguments(handler, request, response)
             response_data = handler(*args)
 
+            response.headers[HTTPHeaders.CONTENT_LENGTH] = str(len(response_data))
             res = (
-                    HTTPHeader.HTTP_1_1.value + response.STATUS_CODE + HTTPHeader.RN.value +
-                    HTTPHeaders.CONTENT_TYPE.value + response.CONTENT_TYPE + HTTPHeader.RN.value +
-                    HTTPHeaders.CONTENT_LENGTH.value + str(len(response_data)) + HTTPHeader.RNRN.value
+                    HTTPHeader.HTTP_1_1.value + response.status_code + HTTPHeader.RN.value +
+                    response.dump_headers() + HTTPHeader.RN.value
             ).encode()
 
             if type(response_data) is str:

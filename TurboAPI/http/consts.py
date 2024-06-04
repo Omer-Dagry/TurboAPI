@@ -1,5 +1,4 @@
 from enum import Enum
-from types import DynamicClassAttribute
 from typing import Dict
 
 
@@ -60,16 +59,16 @@ class HTTPStatusCodes(Enum):
 
 
 class HTTPHeaders(Enum):
-    AUTHORIZATION = "Authorization:"
-    CONTENT_TYPE = "Content-Type:"
-    CONTENT_LENGTH = "Content-Length:"
-    ACCEPT = "Accept:"
-    ENCODING = "Content-Encoding:"
-    HOST = "Host:"
-    NAME = "Name:"
-    QUERY_STRING = "Query-String:"
-    TRANSFER_ENCODING = "Transfer-Encoding:"
-    WWW_AUTHENTICATE = "WWW-Authenticate:"
+    AUTHORIZATION = "Authorization"
+    CONTENT_TYPE = "Content-Type"
+    CONTENT_LENGTH = "Content-Length"
+    ACCEPT = "Accept"
+    ENCODING = "Content-Encoding"
+    HOST = "Host"
+    NAME = "Name"
+    QUERY_STRING = "Query-String"
+    TRANSFER_ENCODING = "Transfer-Encoding"
+    WWW_AUTHENTICATE = "WWW-Authenticate"
 
     @property
     def value(self) -> str:

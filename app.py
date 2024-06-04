@@ -1,7 +1,7 @@
 from pathlib import Path
 
 from TurboAPI import TurboAPI, Request, Response
-from TurboAPI.http import ContentTypes
+from TurboAPI.http import ContentTypes, HTTPHeaders
 from TurboAPI.simple_server import SimpleServer
 
 app = TurboAPI()
@@ -10,7 +10,7 @@ app.mount_folder("/webroot")
 
 @app.get("/")
 def index(response: Response) -> str:
-    response.CONTENT_TYPE = ContentTypes.HTML.value
+    response.headers[HTTPHeaders.CONTENT_TYPE] = ContentTypes.HTML.value
     return Path("webroot/index.html").read_text()
 
 
