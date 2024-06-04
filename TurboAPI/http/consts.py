@@ -68,6 +68,8 @@ class HTTPHeaders(Enum):
     NAME = "Name"
     QUERY_STRING = "Query-String"
     TRANSFER_ENCODING = "Transfer-Encoding"
+    REMOTE_ADDR = "Remote-Addr"
+    USER_AGENT = "User-Agent"
     WWW_AUTHENTICATE = "WWW-Authenticate"
 
     @property
