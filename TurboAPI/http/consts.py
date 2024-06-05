@@ -30,6 +30,7 @@ class HTTPRequestType(Enum):
 
 
 class HTTPStatusCodes(Enum):
+    Switching_Protocols_101 = "101 Switching Protocols"
     OK_200 = "200 OK"
     CREATED_201 = "201 Created"
     ACCEPTED_202 = "202 Accepted"
@@ -63,6 +64,10 @@ class HTTPHeaders(Enum):
     CONTENT_TYPE = "Content-Type"
     CONTENT_LENGTH = "Content-Length"
     ACCEPT = "Accept"
+    UPGRADE = "Upgrade"
+    CONNECTION = "Connection"
+    SecWebSocketAccept = "Sec-WebSocket-Accept"
+    SecWebSocketKey = "Sec-WebSocket-Key"
     ENCODING = "Content-Encoding"
     HOST = "Host"
     NAME = "Name"

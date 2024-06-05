@@ -2,7 +2,7 @@ from pathlib import Path
 
 from TurboAPI import TurboAPI, Request, Response
 from TurboAPI.http import ContentTypes, HTTPHeaders
-from TurboAPI.simple_server import SimpleServer
+from TurboAPI.http_ssl_server import HTTPSSLServer
 
 app = TurboAPI()
 app.mount_folder("/webroot")
@@ -22,7 +22,7 @@ def test(request: Request, response: Response) -> bytes:
 
 
 def main() -> None:
-    SimpleServer("0.0.0.0", 80).run(app)
+    HTTPSSLServer("0.0.0.0", 443, Path("certificate.crt"), Path("privateKey.key")).run(app)
 
 
 if __name__ == '__main__':

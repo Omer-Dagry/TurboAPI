@@ -83,19 +83,13 @@ class TurboAPI:
 
             args = self._assemble_handler_arguments(handler, request, response)
             response_data = handler(*args)
+            if type(response_data) is str:
+                response_data = response_data.encode()
+            elif type(response_data) is not bytes:
+                response_data = json.dumps(response_data).encode()
 
             response.headers[HTTPHeaders.CONTENT_LENGTH] = str(len(response_data))
-            res = (
-                    HTTPHeader.HTTP_1_1.value + response.status_code + HTTPHeader.RN.value +
-                    response.dump_headers() + HTTPHeader.RN.value
-            ).encode()
-
-            if type(response_data) is str:
-                res += response_data.encode()
-            elif type(response_data) is bytes:
-                res += response_data
-            else:
-                res += json.dumps(response_data).encode()
+            res = response.generate_response().encode() + response_data
 
             return res
         except Exception as e:
