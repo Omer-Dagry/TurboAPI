@@ -15,7 +15,6 @@ class HTTPSSLServer(HTTPServer):
     def _initiate_server(self):
         self._sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self._server_socket = create_ssl_socket(
-            self._sock,
             server_side=True,
             certfile=str(self._certfile),
             keyfile=str(self._keyfile)
