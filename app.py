@@ -2,7 +2,7 @@ from pathlib import Path
 
 from TurboAPI import TurboAPI, Request, Response
 from TurboAPI.http import ContentTypes, HTTPHeaders
-from TurboAPI.http_ssl_server import HTTPSSLServer
+from TurboAPI import HTTPSSLServer
 
 app = TurboAPI()
 app.mount_folder("/webroot")

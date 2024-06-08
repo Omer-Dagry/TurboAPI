@@ -1,9 +1,9 @@
 import socket
 import ssl
 import threading
-from typing import Tuple, List, Dict
+from typing import Tuple
 
-from .http import HTTPHeaders, HTTPHeader, recv_http_request
+from .http import recv_http_request
 from .request import Request
 from .turbo_api import TurboAPI
 
